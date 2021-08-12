@@ -32,6 +32,6 @@ class Admin::SessionsController < Devise::SessionsController
 
   def after_sign_out_path_for(resource)
     # 管理者ログイン画面
-    new_admin_session
+    new_admin_session_path
   end
 end
