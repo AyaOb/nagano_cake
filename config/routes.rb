@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get '/' => 'homes#top'
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :items, only: [:index, :show, :edit, :update]
   end
 
   devise_for :admin, :controllers => {
