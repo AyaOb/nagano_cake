@@ -1,0 +1,55 @@
+<h2>注文履歴詳細</h2>
+<table>
+  <tbody>
+    <% @order.each do |order| %>
+      <tr>
+        <td>購入者</td>
+        <td><%= order.customer.last_name %> <%= order.customer.first_name %></td>
+      </tr>
+       <tr>
+        <td>注文日</td>
+        <td><%= order.created_at %></td>
+      </tr>
+       <tr>
+        <td>配送先</td>
+        <td>
+          <%= order.postal_code %> <%= order.address %><br />
+          <%= order.name %>
+        </td>
+      </tr>
+       <tr>
+        <td>支払方法</td>
+        <td><%= order.payment_method %></td>
+      </tr>
+       <tr>
+        <td>注文ステータス</td>
+        <td><%= order.status %></td>
+        <td><%= link_to "更新", admin_order_path(order.id), method: :patch %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <th>単価（税込）</th>
+      <th>数量</th>
+      <th>小計</th>
+      <th>制作ステータス</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @order_details.each do |order_detail| %>
+      <tr>
+        <td><%= order_detail.item.name %></td>
+        <td><%= (order_detail.price*1.1).floor.to_s(:delimited) %></td>
+        <td><%= order_detail.amount %></td>
+        <td><%= ((order_detail.price*1.1)*order_detail.amount).floor.to_s(:delimited) %></td>
+        <td><%= link_to '更新', admin_order_order_detail_path(order.id, order_detail.id), method: :patch %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

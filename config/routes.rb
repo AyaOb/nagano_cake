@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
     resources :customers, only: [:index, :show, :edit, :update]
+    resources :orders, only: [:show, :update] do
+      resources :order_details, only: [:update]
+    end
   end
 
   devise_for :admin, :controllers => {
