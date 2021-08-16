@@ -30,26 +30,46 @@
   </tbody>
 </table>
 
-<table>
-  <thead>
+<div>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th>制作ステータス</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @order_details.each do |order_detail| %>
+          <tr>
+            <td><%= order_detail.item.name %></td>
+            <td><%= (order_detail.price).to_s(:delimited) %></td>
+            <td><%= order_detail.amount %></td>
+            <td><%= ((order_detail.price)*order_detail.amount).floor.to_s(:delimited) %></td>
+            <td><%= link_to '更新', admin_order_order_detail_path(order.id, order_detail.id), method: :patch %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
     <tr>
-      <th>商品名</th>
-      <th>単価（税込）</th>
-      <th>数量</th>
-      <th>小計</th>
-      <th>制作ステータス</th>
-      <th></th>
+      <td>商品合計</td>
+      <td><%= order. %></td>
     </tr>
-  </thead>
-  <tbody>
-    <% @order_details.each do |order_detail| %>
-      <tr>
-        <td><%= order_detail.item.name %></td>
-        <td><%= (order_detail.price*1.1).floor.to_s(:delimited) %></td>
-        <td><%= order_detail.amount %></td>
-        <td><%= ((order_detail.price*1.1)*order_detail.amount).floor.to_s(:delimited) %></td>
-        <td><%= link_to '更新', admin_order_order_detail_path(order.id, order_detail.id), method: :patch %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+     <tr>
+      <td>送料</td>
+      <td><%= order.shipping_cost %></td>
+    </tr>
+     <tr>
+      <td>請求金額合計</td>
+      <td><%= order.total_price %></td>
+    </tr>
+  </div>
+
+</div>
