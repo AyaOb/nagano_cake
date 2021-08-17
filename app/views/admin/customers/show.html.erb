@@ -1,4 +1,4 @@
-<h2><%= @customer.name %>さんの会員詳細</h2>
+<h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h2>
 
 <table>
   <tbody>
@@ -38,4 +38,4 @@
 </table>
 
 <%= link_to '編集する', edit_admin_customer_path(@customer.id) %>
-<%= link_to '注文履歴一覧を見る' admin_customers_path %>
+<%= link_to '注文履歴一覧を見る', admin_path %>
