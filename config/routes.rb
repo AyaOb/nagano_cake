@@ -2,6 +2,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
+    resources :customers, only: [:show, :edit, :update]
+    get 'customers/confirm' => 'customers#confirm'
+    patch 'customers/quit' => 'customers#quit'
   end
 
   namespace :admin do
