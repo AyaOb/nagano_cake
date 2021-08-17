@@ -24,4 +24,9 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+
+  def after_sign_in_path_for(resource)
+    # 管理者トップページ（注文履歴一覧）
+    admin_path
+  end
 end
