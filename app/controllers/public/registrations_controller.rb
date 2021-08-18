@@ -63,7 +63,7 @@ class Public::RegistrationsController < Devise::RegistrationsController
 
   def after_sign_up_path_for(resource)
     # 新規会員登録した際は、マイページ
-    new_admin_item_path
+    customer_path
   end
 
   private

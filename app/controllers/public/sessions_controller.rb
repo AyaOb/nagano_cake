@@ -26,7 +26,7 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
-    # 管理者トップページ（注文履歴一覧）
-    admin_path
+    # 会員ログイン後、トップページ
+    root_path
   end
 end
