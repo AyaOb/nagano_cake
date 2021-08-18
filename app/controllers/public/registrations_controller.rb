@@ -60,14 +60,12 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
-
   def after_sign_up_path_for(resource)
     # 新規会員登録した際は、マイページ
-    customer_path
+      customers_my_page_path
   end
 
   private
-
   def configure_permitted_parameters
     added_attrs = [:last_name, :first_name, :last_name_kana, :first_name_kana, :postal_code, :address, :telephone_number,]
     devise_parameter_sanitizer.permit(:sign_up, keys: added_attrs)

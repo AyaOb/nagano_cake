@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
+  devise_for :customers, :controllers => {
+    :sessions => 'public/sessions',
+    :registrations => 'public/registrations'
+  }
+
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
-    resources :customers, only: [:show, :edit, :update]
+    get 'customers/my_page' => 'customers#show'
+    get 'customers/edit' => 'customers#edit'
+    get 'customers/update' => 'customers#update'
     get 'customers/confirm' => 'customers#confirm'
     patch 'customers/quit' => 'customers#quit'
   end
@@ -21,9 +28,5 @@ Rails.application.routes.draw do
     :sessions => 'admin/sessions'
   }
 
-  devise_for :customers, :controllers => {
-    :sessions => 'public/sessions',
-    :registrations => 'public/registrations'
-  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
