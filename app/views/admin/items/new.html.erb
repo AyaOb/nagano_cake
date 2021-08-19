@@ -1,7 +1,7 @@
 <h2>商品新規登録</h2>
 <%= form_with model:@item, url:admin_items_path, local:true do |f| %>
 
-  <%= render 'item_form', f: f %>
+  <%= render 'admin/shared/item_form', f: f %>
 
   <%= f.submit :"新規登録" %>
 <% end %>
