@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :customers, :controllers => {
-    :sessions => 'public/sessions',
-    :registrations => 'public/registrations'
+  devise_for :customers, :skip => [:password, :registrations], :controllers => {
+    :sessions => 'public/sessions'
   }
+
+  devise_scope :customers do
+    get 'customers/sign_up' => 'public/registrations#new'
+    post 'customers' => 'public/registrations#create'
+  end
 
   scope module: :public do
     root to: 'homes#top'
@@ -24,7 +28,7 @@ Rails.application.routes.draw do
     end
   end
 
-  devise_for :admin, :controllers => {
+  devise_for :admin, :skip => [:registrations, :password], :controllers => {
     :sessions => 'admin/sessions'
   }
 
