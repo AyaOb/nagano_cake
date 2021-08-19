@@ -1,22 +1,18 @@
 Rails.application.routes.draw do
-  devise_for :customers, :skip => [:password, :registrations], :controllers => {
-    :sessions => 'public/sessions'
-  }
-
-  devise_scope :customers do
-    get 'customers/sign_up' => 'public/registrations#new'
-    post 'customers' => 'public/registrations#create'
-  end
-
   scope module: :public do
     root to: 'homes#top'
     get 'about' => 'homes#about'
     get 'customers/my_page' => 'customers#show'
     get 'customers/edit' => 'customers#edit'
-    get 'customers/update' => 'customers#update'
+    patch 'customers/update' => 'customers#update'
     get 'customers/confirm' => 'customers#confirm'
     patch 'customers/quit' => 'customers#quit'
   end
+
+  devise_for :customers, :skip => [:password ], :controllers => {
+    :sessions => 'public/sessions',
+    :registrations => 'public/registrations'
+  }
 
   namespace :admin do
     get '/' => 'homes#top'
