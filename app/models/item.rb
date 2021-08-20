@@ -5,5 +5,5 @@ class Item < ApplicationRecord
 
   attachment :image
 
-  enum is_active: {on_sale: true, sold_out: false}
+  enum is_active: { on_sale: true, sold_out: false}
 end
