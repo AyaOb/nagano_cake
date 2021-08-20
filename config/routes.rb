@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     patch 'customers/update' => 'customers#update'
     get 'customers/confirm' => 'customers#confirm'
     patch 'customers/quit' => 'customers#quit'
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
   devise_for :customers, :skip => [:password ], :controllers => {

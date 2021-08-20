@@ -1,6 +1,6 @@
 <h2>マイページ</h2>
 <h2>登録情報</h2>
-<%= link_to "編集する", customers_edit_path %>
+<div><%= link_to "編集する", customers_edit_path %></div>
 <table>
   <tbody>
     <tr>
@@ -29,3 +29,11 @@
     </tr>
   </tbody>
 </table>
+<div>
+  <div>配送先</div>
+  <div><%= link_to "一覧を見る", addresses_path %></div>
+</div>
+<div>
+  <div>注文履歴</div>
+  <div></div>
+</div>
