@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     patch 'customers/quit' => 'customers#quit'
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    get 'cart_items/destroy_all' => 'cart_items#destroy_all'
   end
 
   devise_for :customers, :skip => [:password ], :controllers => {
