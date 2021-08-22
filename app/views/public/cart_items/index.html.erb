@@ -29,5 +29,5 @@
 </table>
 <%= link_to "買い物を続ける", root_path %>
 <div>
-  合計金額  <%= @total %>
+  合計金額  <%= @total.to_s(:delimited) %>
 </div>
