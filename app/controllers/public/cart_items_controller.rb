@@ -5,26 +5,25 @@ class Public::CartItemsController < ApplicationController
       @cart_item.amount += cart_item_params[:amount].to_i
       @cart_item.update(amount: @cart_item.amount)
     else
-      @cart_item = CartItem.new(cart_item_params)
-      @cart_item.customer_id = current_customer.id
+      @cart_item = current_customer.cart_items.new(cart_item_params)
       @cart_item.save
     end
     redirect_to cart_items_path
   end
 
   def index
-    @cart_items = CartItem.all
+    @cart_items = current_customer.cart_items
     @total = 0
   end
 
   def update
-    @cart_item = CartItem.find(params[:id])
+    @cart_item = current_customer.cart_items.find(params[:id])
     @cart_item.update(cart_item_params)
     redirect_to cart_items_path
   end
 
   def destroy
-    @cart_item = CartItem.find(params[:id])
+    @cart_item = current_customer.cart_items.find(params[:id])
     @cart_item.destroy
     redirect_to cart_items_path
   end
