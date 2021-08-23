@@ -9,4 +9,12 @@ class Customer < ApplicationRecord
   has_many :orders, dependent: :destroy
 
   enum is_active: { enable: true, disable: false}
+
+  def full_name
+    last_name + first_name
+  end
+
+  def current_address
+    '〒' + postal_code + ' ' + address
+  end
 end
