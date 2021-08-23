@@ -25,8 +25,8 @@
 
   <div>
     <%= f.label :"販売ステータス" %>
-    <%= f.radio_button :is_active, :on_sale, checked: true %>
-    <%= f.label :is_active, "販売中" %>
-    <%= f.radio_button :is_active, :sold_out %>
-    <%= f.label :is_active, "売切れ" %>
+    <%= f.radio_button :is_active, Item.is_actives.key(true), checked: true %>
+    <%= f.label :is_active, Item.is_actives_i18n[:on_sale] %>
+    <%= f.radio_button :is_active, Item.is_actives.key(false) %>
+    <%= f.label :is_active, Item.is_actives_i18n[:sold_out] %>
   </div>
