@@ -12,6 +12,13 @@ ja:
         preparing: '発送準備中'
         shipped: '発送済み'
 
+    order_detail:
+      making_status:
+        not_startable: '着手不可'
+        waiting: '制作待ち'
+        in_production: '制作中'
+        completed: '制作完了'
+
     item:
       is_active:
         on_sale: '販売中'

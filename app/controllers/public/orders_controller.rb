@@ -4,7 +4,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
+    # 注文入力画面から送られてきたデータを取得
     @order = Order.new(order_params)
+    # 選択された住所のデータを格納
     if params[:order][:select_address].to_i == 0
       @order.postal_code = current_customer.postal_code
       @order.address = current_customer.address
@@ -17,8 +19,9 @@ class Public::OrdersController < ApplicationController
     else
     end
     @cart_items = current_customer.cart_items
-    @order.shipping_cost = 800
+    @order.shipping_cost = POSTAGE
     @total = 0
+    # カート内の商品合計金額を算出
     @cart_items.each do |cart_item|
       @total += cart_item.subtotal
     end
@@ -30,16 +33,23 @@ class Public::OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    # @order.save
-    binding.pry
+    @order.save
     @cart_items = current_customer.cart_items
+    # @cart_itemsの情報をOrderDetailモデルに格納
     @cart_items.each do |cart_item|
       @order_detail = OrderDetail.new
-
+      @order_detail.order_id = @order.id
+      @order_detail.item_id = cart_item.item_id
+      @order_detail.price = cart_item.item.with_tax_price
+      @order_detail.amount = cart_item.amount
+      @order_detail.save
     end
+    # カート内商品全削除
+    @cart_items.destroy_all
   end
 
   def index
+
   end
 
   def show

@@ -9,3 +9,4 @@ class Order < ApplicationRecord
   '〒' + postal_code + ' ' + address
   end
 end
+  
