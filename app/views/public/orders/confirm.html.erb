@@ -2,7 +2,7 @@
 <%= form_with model:@order, url:orders_path, local:true do |f| %>
   <div class="container">
     <div class="row">
-      <div class=col-6>
+      <div class="col-6">
         <table>
           <thead>
             <th>商品名</th>
@@ -35,7 +35,7 @@
         </div>
         <div><%= f.submit "注文を確定する", class: 'btn btn-success' %></div>
       </div>
-      <div class=col-3>
+      <div class="col-3">
         <table>
           <tr><th>送料</th><td><%= @order.shipping_cost %></td></tr>
           <%= f.hidden_field :shipping_cost, :value => @order.shipping_cost %>
