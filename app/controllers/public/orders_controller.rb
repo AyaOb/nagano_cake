@@ -32,7 +32,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = current_customer.orders.new(order_params)
     @order.save
     @cart_items = current_customer.cart_items
     # @cart_itemsの情報をOrderDetailモデルに格納
@@ -46,10 +46,11 @@ class Public::OrdersController < ApplicationController
     end
     # カート内商品全削除
     @cart_items.destroy_all
+    redirect_to orders_complete_path
   end
 
   def index
-
+    @orders = current_customer.orders
   end
 
   def show
