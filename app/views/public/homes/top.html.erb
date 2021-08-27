@@ -1,2 +1,19 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="container px-5">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'public/shared/genre_search', genres: @genres %>
+    </div>
+    <div class="col-md-8">
+      <div>
+        <div>ようこそ、ながの<strong>CAKE</strong>へ！</div>
+        <div>このサイトは、ケーキ販売の<strong>EC</strong>サイトになります。</div>
+        <div>会員でない方も商品の閲覧はできますが、</div>
+        <div>購入には会員登録が必要になります。</div>
+      </div>
+      <div>
+        <h3>新着商品</h3>
+        <%= render 'public/shared/item_index', items: @items %>
+      </div>
+    </div>
+  </div>
+</div>
