@@ -50,9 +50,9 @@
           <% @order_details.each do |order_detail| %>
             <tr>
               <td><%= order_detail.item.name %></td>
-              <td><%= (order_detail.price).to_s(:delimited) %></td>
+              <td><%= order_detail.price.to_s(:delimited) %></td>
               <td><%= order_detail.amount %></td>
-              <td><%= ((order_detail.price)*order_detail.amount).floor.to_s(:delimited) %></td>
+              <td><%= order_detail.subtotal.to_s(:delimited) %></td>
               <td><%= order_detail.making_status_i18n %></td>
               <td><%= link_to '更新', admin_order_order_detail_path(@order.id, order_detail.id), method: :patch, class: 'btn btn-success' %></td>
             </tr>
