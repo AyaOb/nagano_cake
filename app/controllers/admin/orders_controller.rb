@@ -1,7 +1,8 @@
 class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
-    @order_details = Order_details.all
+    @order_details = OrderDetail.all
+    @items_total = @order.total_price - @order.shipping_cost
   end
 
   def update
