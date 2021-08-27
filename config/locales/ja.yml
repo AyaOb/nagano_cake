@@ -28,3 +28,8 @@ ja:
       is_active:
         enable: '有効'
         disable: '退会'
+
+  time:
+    formats:
+      default: "%Y/%m/%d %H:%M:%S"
+      short: "%Y/%m/%d"
