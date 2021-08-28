@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
-  
   POSTAGE = 800
-  
+
   def after_sign_in_path_for(resource)
     if admin_signed_in?
       # 管理者トップページ（注文履歴一覧）
