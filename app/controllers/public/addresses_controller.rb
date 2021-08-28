@@ -7,8 +7,12 @@ class Public::AddressesController < ApplicationController
 
   def create
     @address = current_customer.addresses.new(address_params)
-    @address.save
-    redirect_to addresses_path
+    if @address.save
+      redirect_to addresses_path
+    else
+      @addresses = Address.where(customer_id: current_customer.id)
+      render :index
+    end
   end
 
   def edit
