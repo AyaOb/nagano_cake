@@ -1,18 +1,20 @@
 <div class="container px-5">
   <div class="row">
-    <div class="col-md-3">
+    <div class="col-md-2 px-2">
       <%= render 'public/shared/genre_search', genres: @genres %>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-9">
       <div>
-        <div>ようこそ、ながの<strong>CAKE</strong>へ！</div>
-        <div>このサイトは、ケーキ販売の<strong>EC</strong>サイトになります。</div>
-        <div>会員でない方も商品の閲覧はできますが、</div>
-        <div>購入には会員登録が必要になります。</div>
+        ようこそ、ながの<strong>CAKE</strong>へ！<br />
+        このサイトは、ケーキ販売の<strong>EC</strong>サイトになります。<br />
+        会員でない方も商品の閲覧はできますが、<br />
+        購入には会員登録が必要になります。
       </div>
       <div>
         <h3>新着商品</h3>
-        <%= render 'public/shared/item_index', items: @items %>
+        <div class="row">
+          <%= render 'public/shared/item_index', items: @items %>
+        </div>
       </div>
     </div>
   </div>
