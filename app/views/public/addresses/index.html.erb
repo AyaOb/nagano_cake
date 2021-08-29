@@ -1,30 +1,30 @@
 <div class="container">
-  <div class="row">
+  <div class="row pl-5">
     <h4 class="bg-light">配送先登録／一覧</h4>
   </div>
   <div class="row">
     <%= form_with model:@address, url:addresses_path, local:true do |f| %>
       <%= render 'public/shared/address_form', f: f %>
-      <div class="text-right">
-        <%= f.submit "新規登録", class: 'btn btn-success' %>
+      <div class="col-8 offset-8 text-right mt-3">
+        <%= f.submit "新規登録", class: 'btn btn-success px-4' %>
       </div>
     <% end %>
   </div>
-  <div class="row">
+  <div class="row mt-4">
     <table>
-      <thead>
-        <th>郵便番号</th>
-        <th>住所</th>
-        <th>宛名</th>
+      <thead class="bg-light border border-dark">
+        <th class="border border-dark">郵便番号</th>
+        <th class="border border-dark">住所</th>
+        <th class="border border-dark">宛名</th>
         <th></th>
       </thead>
       <tbody>
         <% @addresses.each do |address| %>
-        <tr>
-          <td><%= address.postal_code %></td>
-          <td><%= address.address %></td>
-          <td><%= address.name %></td>
-          <td>
+        <tr class="border border-dark">
+          <td class="border border-dark"><%= address.postal_code %></td>
+          <td class="border border-dark"><%= address.address %></td>
+          <td class="border border-dark"><%= address.name %></td>
+          <td class="border border-dark">
             <%= link_to "編集する", edit_address_path(address.id), class: 'btn btn-success' %>
             <%= link_to "削除する", address_path(address.id), method: :delete, class: 'btn btn-danger' %>
           </td>
