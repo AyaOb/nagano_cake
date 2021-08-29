@@ -23,7 +23,11 @@ input[type="password"] {
   width: 300px;
 }
 
-table th, table td {
-  padding: 10px 40px 1px 10px;
+table th {
+  padding: 10px 30px 1px 10px;
   vertical-align: middle;
+}
+
+table td {
+  padding: 10px 10px 1px 10px;
 }
