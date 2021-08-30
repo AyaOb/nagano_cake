@@ -1,27 +1,33 @@
-<h2>注文履歴一覧</h2>
-<table>
-  <thead>
-    <th>注文日</th>
-    <th>配送先</th>
-    <th>注文商品</th>
-    <th>支払金額</th>
-    <th>ステータス</th>
-    <th>注文詳細</th>
-  </thead>
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr>
-        <td><%= l order.created_at, format: :short %></td>
-        <td>〒<%= order.postal_code %><br /><%= order.address %><br /><%= order.name %></td>
-        <td>
-          <% order.order_details.each do |order_detail| %>
-            <%= order_detail.item.name %><br />
-          <% end %>
-          </td>
-        <td><%= order.total_price.to_s(:delimited) %></td>
-        <td><%= order.status_i18n %></td>
-        <td><%= link_to "表示する", order_path(order.id) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row pl-5">
+    <h4 class="bg-light">注文履歴一覧</h4>
+  </div>
+  <div class="row">
+    <table>
+      <thead class="bg-light border border-dark">
+        <th class="border border-dark">注文日</th>
+        <th class="border border-dark">配送先</th>
+        <th class="border border-dark">注文商品</th>
+        <th class="border border-dark pr-2">支払金額</th>
+        <th class="border border-dark">ステータス</th>
+        <th class="border border-dark">注文詳細</th>
+      </thead>
+      <tbody>
+        <% @orders.each do |order| %>
+          <tr>
+            <td class="border border-dark pr-5"><%= l order.created_at, format: :short %></td>
+            <td class="border border-dark pr-5">〒<%= order.postal_code %><br /><%= order.address %><br /><%= order.name %></td>
+            <td class="border border-dark">
+              <% order.order_details.each do |order_detail| %>
+                <%= order_detail.item.name %><br />
+              <% end %>
+              </td>
+            <td class="border border-dark"><%= order.total_price.to_s(:delimited) %></td>
+            <td class="border border-dark"><%= order.status_i18n %></td>
+            <td class="border border-dark"><%= link_to "表示する", order_path(order.id), class: 'btn btn-primary' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
