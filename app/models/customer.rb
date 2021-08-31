@@ -10,7 +10,7 @@ class Customer < ApplicationRecord
 
   enum is_active: { enable: true, disable: false}
 
-  validates :password, length: {minimum: 6 }
+  validates :password, length: {minimum: 6 }, on: :create
   validates :last_name, presence: true
   validates :first_name, presence: true
   validates :last_name_kana, presence: true

@@ -1,4 +1,16 @@
 ja:
+  activerecord:
+    errors:
+      models:
+        customer:
+          atributes:
+            password:
+              too_short: 'パスワードが短すぎます.'
+
+  errors:
+    messages:
+      not_saved: '保存できませんでした'
+
   enums:
     order:
       payment_method:
@@ -33,3 +45,4 @@ ja:
     formats:
       default: "%Y/%m/%d %H:%M:%S"
       short: "%Y/%m/%d"
+
