@@ -15,7 +15,7 @@
         <table>
           <tbody>
             <tr class="mt-2">
-              <td><%= f.select :amount, *[1..5], {include_blank: "- 個数選択 -"}  %></td>
+              <td><%= f.select :amount, *[1..5] %></td>
               <td><%= f.submit "カートに入れる", class: 'btn btn-success' %></td>
             </tr>
           </tbody>
