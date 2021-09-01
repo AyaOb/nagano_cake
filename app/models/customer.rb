@@ -19,10 +19,6 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :telephone_number, presence: true
 
-  def active_for_authentication?
-    super && (self.is_active == "disable" )
-  end
-
   def full_name
     last_name + first_name
   end
