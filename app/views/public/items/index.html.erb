@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-9">
       <h2>商品一覧</h2>
-      <div class="row">
+      <div class="d-flex flex-wrap">
         <%= render 'public/shared/item_index', items: @items %>
       </div>
       <%= paginate @items %>
